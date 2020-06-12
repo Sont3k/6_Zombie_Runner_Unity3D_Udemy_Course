@@ -18,22 +18,37 @@ public class EnemyAI : MonoBehaviour
 
     void Update()
     {
-        CheckDistanceToTarget();
+        EngageTarget();
     }
 
-    private void CheckDistanceToTarget()
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, chaseRange);
+    }
+
+    private void EngageTarget()
     {
         distanceToTarget = Vector3.Distance(target.position, transform.position);
 
-        if (distanceToTarget <= chaseRange)
+        if (distanceToTarget >= navMeshAgent.stoppingDistance && distanceToTarget <= chaseRange)
         {
-            SetTargetAsDestination();
+            ChaseTarget();
+        }
+        else if (distanceToTarget <= navMeshAgent.stoppingDistance)
+        {
+            AttackTarget();
         }
     }
 
-    private void SetTargetAsDestination()
+    private void ChaseTarget()
     {
         navMeshAgent.SetDestination(target.transform.position);
     }
 
+    private void AttackTarget()
+    {
+        // Attack player
+        print($"{name} has seeked and is destroying {target.name}");
+    }
 }

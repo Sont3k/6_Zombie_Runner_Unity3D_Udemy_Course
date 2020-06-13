@@ -3331,6 +3331,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FPSCamera: {fileID: 737703303}
   range: 100
+  damage: 20
+  muzzleFlash: {fileID: 1538924260}
+--- !u!198 &1538924260 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5047084525952371456, guid: 5e9e851c0e142814dac026a256ba2ac0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1538924257}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1546481886
 PrefabInstance:
   m_ObjectHideFlags: 0

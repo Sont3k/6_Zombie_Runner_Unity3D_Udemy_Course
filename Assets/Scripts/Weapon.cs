@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
@@ -9,6 +6,8 @@ public class Weapon : MonoBehaviour
     public float range = 100f;
     public float damage = 20f;
     public ParticleSystem muzzleFlash;
+    public GameObject hitEffect;
+    public float vfxDestroyDelay = 0.1f;
 
     void Update()
     {
@@ -36,12 +35,18 @@ public class Weapon : MonoBehaviour
 
         if (hit.transform != null)
         {
-            print(hit.transform.gameObject.name);
+            CreateHitImpact(hit);
             //TODO add some hit effect for visual players
             EnemyHealth target = hit.transform.GetComponent<EnemyHealth>();
             if (target == null) return;
             //TODO call a method on EnemyHealth that decreases the enemy's health
             target.TakeDamage(damage);
         }
+    }
+
+    private void CreateHitImpact(RaycastHit hit)
+    {
+        var impact = Instantiate(hitEffect, hit.point, Quaternion.LookRotation(hit.normal));
+        Destroy(impact, vfxDestroyDelay);
     }
 }

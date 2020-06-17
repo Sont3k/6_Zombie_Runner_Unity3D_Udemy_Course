@@ -11,9 +11,12 @@ public class EnemyAI : MonoBehaviour
     private NavMeshAgent navMeshAgent;
     private float distanceToTarget = Mathf.Infinity;
 
+    private Animator animator;
+
     void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -43,11 +46,14 @@ public class EnemyAI : MonoBehaviour
 
     private void ChaseTarget()
     {
+        animator.SetBool("attack", false);
+        animator.SetTrigger("move");
         navMeshAgent.SetDestination(target.transform.position);
     }
 
     private void AttackTarget()
     {
+        animator.SetBool("attack", true);
         // Attack player
         print($"{name} has seeked and is destroying {target.name}");
     }

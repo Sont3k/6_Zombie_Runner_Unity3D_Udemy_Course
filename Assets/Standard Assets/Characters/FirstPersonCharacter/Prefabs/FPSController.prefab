@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 5400000}
   - component: {fileID: 8200000}
   - component: {fileID: 999820489}
+  - component: {fileID: 1142264236}
+  - component: {fileID: 6215413417278724537}
   m_Layer: 0
   m_Name: FPSController
   m_TagString: Untagged
@@ -305,6 +307,31 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1142264236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edf79762f99a228459ff52185f0df807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 120
+--- !u!114 &6215413417278724537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3375873bec1895246853dee18c65840e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &100002
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,8 +471,8 @@ MonoBehaviour:
   range: 100
   damage: 20
   muzzleFlash: {fileID: 5047084525952371456}
-  hitEffect: {fileID: 0}
-  vfxDestroyDelay: 2
+  hitEffect: {fileID: 3936032522288672495}
+  vfxDestroyDelay: 0.1
 --- !u!1001 &121290231
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -456,7 +483,7 @@ PrefabInstance:
     - target: {fileID: 3936032522304720696, guid: 10ffafe8c79972342957632ef2bdb112,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.55323696
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3936032522304720696, guid: 10ffafe8c79972342957632ef2bdb112,
         type: 3}
@@ -466,7 +493,7 @@ PrefabInstance:
     - target: {fileID: 3936032522304720696, guid: 10ffafe8c79972342957632ef2bdb112,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.234365
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3936032522304720696, guid: 10ffafe8c79972342957632ef2bdb112,
         type: 3}
@@ -513,8 +540,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hit Effect VFX
       objectReference: {fileID: 0}
+    - target: {fileID: 3936032522315062834, guid: 10ffafe8c79972342957632ef2bdb112,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10ffafe8c79972342957632ef2bdb112, type: 3}
+--- !u!1 &3936032522288672495 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3936032522304754456, guid: 10ffafe8c79972342957632ef2bdb112,
+    type: 3}
+  m_PrefabInstance: {fileID: 121290231}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5938140259134436989
 PrefabInstance:
   m_ObjectHideFlags: 0

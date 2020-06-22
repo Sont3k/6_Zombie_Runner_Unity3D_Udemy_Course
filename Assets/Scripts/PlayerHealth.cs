@@ -5,6 +5,12 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     public float health = 10f;
+    private DeathHandler deathHandler;
+
+    private void Awake()
+    {
+        deathHandler = GetComponent<DeathHandler>();
+    }
 
     public void TakeDamage(float damage)
     {
@@ -14,8 +20,7 @@ public class PlayerHealth : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
-            print("Player is dead");
+            deathHandler.HandleDeath();
         }
     }
 }

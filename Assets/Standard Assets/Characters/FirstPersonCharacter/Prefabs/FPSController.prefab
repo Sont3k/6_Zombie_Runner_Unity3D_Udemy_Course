@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 999820489}
   - component: {fileID: 1142264236}
   - component: {fileID: 6215413417278724537}
+  - component: {fileID: 1538924259}
   m_Layer: 0
   m_Name: FPSController
   m_TagString: Untagged
@@ -332,6 +333,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3375873bec1895246853dee18c65840e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOverCanvas: {fileID: 0}
+--- !u!114 &1538924259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb4a1e9f9f617f1489a97a29a40e5846, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &100002
 GameObject:
   m_ObjectHideFlags: 0
@@ -455,7 +469,7 @@ Transform:
   m_Father: {fileID: 400000}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1538924259
+--- !u!114 &8507856305512760122
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

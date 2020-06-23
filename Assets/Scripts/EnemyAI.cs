@@ -13,6 +13,7 @@ public class EnemyAI : MonoBehaviour
 
     private Animator animator;
     public float turnSpeed = 5f;
+    private bool isProvoked;
 
     void Awake()
     {
@@ -23,6 +24,11 @@ public class EnemyAI : MonoBehaviour
     void Update()
     {
         EngageTarget();
+    }
+
+    public void OnDamageTaken()
+    {
+        isProvoked = true;
     }
 
     private void OnDrawGizmosSelected()
@@ -36,11 +42,11 @@ public class EnemyAI : MonoBehaviour
         distanceToTarget = Vector3.Distance(target.position, transform.position);
         FaceTarget();
 
-        if (distanceToTarget >= navMeshAgent.stoppingDistance && distanceToTarget <= chaseRange)
+        if ((distanceToTarget >= navMeshAgent.stoppingDistance && distanceToTarget <= chaseRange) || isProvoked)
         {
             ChaseTarget();
         }
-        else if (distanceToTarget <= navMeshAgent.stoppingDistance)
+        else if (distanceToTarget <= navMeshAgent.stoppingDistance || isProvoked)
         {
             AttackTarget();
         }
@@ -64,7 +70,7 @@ public class EnemyAI : MonoBehaviour
     {
         Vector3 direction = (target.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-    
+
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeed);
     }
 }

@@ -8,6 +8,7 @@ public class Weapon : MonoBehaviour
     public ParticleSystem muzzleFlash;
     public GameObject hitEffect;
     public float vfxDestroyDelay = 0.1f;
+    public Ammo ammoSlot;
 
     void Update()
     {
@@ -19,8 +20,12 @@ public class Weapon : MonoBehaviour
 
     private void Shoot()
     {
-        PlayMuzzleFlash();
-        ProcessRaycast();
+        if (ammoSlot.GetCurrentAmmo() > 0)
+        {
+            PlayMuzzleFlash();
+            ProcessRaycast();
+            ammoSlot.ReduceCurrentAmmo();
+        }
     }
 
     private void PlayMuzzleFlash()

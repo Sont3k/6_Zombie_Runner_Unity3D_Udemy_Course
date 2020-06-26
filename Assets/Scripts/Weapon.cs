@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
@@ -9,23 +10,30 @@ public class Weapon : MonoBehaviour
     public GameObject hitEffect;
     public float vfxDestroyDelay = 0.1f;
     public Ammo ammoSlot;
+    private bool canShoot = true;
+    public float timeBetweenShots = 0.5f;
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && canShoot)
         {
-            Shoot();
+            StartCoroutine(Shoot());
         }
     }
 
-    private void Shoot()
+    private IEnumerator Shoot()
     {
+        canShoot = false;
+
         if (ammoSlot.GetCurrentAmmo() > 0)
         {
             PlayMuzzleFlash();
             ProcessRaycast();
             ammoSlot.ReduceCurrentAmmo();
         }
+
+        yield return new WaitForSecondsRealtime(timeBetweenShots);
+        canShoot = true;
     }
 
     private void PlayMuzzleFlash()

@@ -14763,7 +14763,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FPSCamera: {fileID: 0}
   range: 25
-  damage: 20
+  damage: 30
   muzzleFlash: {fileID: 7127799888637449964}
   hitEffect: {fileID: 1332581845042754307}
   vfxDestroyDelay: 0.1

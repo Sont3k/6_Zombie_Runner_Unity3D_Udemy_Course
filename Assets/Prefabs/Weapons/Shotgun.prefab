@@ -14690,7 +14690,7 @@ Transform:
   m_GameObject: {fileID: 6262157507874811927}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0.234, y: 0.663, z: 0.402}
-  m_LocalScale: {x: 1.5, y: 2, z: 4}
+  m_LocalScale: {x: 1.5, y: 2, z: 8}
   m_Children:
   - {fileID: 6262157507874778165}
   - {fileID: 6262157507874778161}
@@ -14768,7 +14768,7 @@ MonoBehaviour:
   hitEffect: {fileID: 1332581845042754307}
   vfxDestroyDelay: 0.1
   ammoSlot: {fileID: 0}
-  timeBetweenShots: 3
+  timeBetweenShots: 2
 --- !u!114 &7331438337710552069
 MonoBehaviour:
   m_ObjectHideFlags: 0

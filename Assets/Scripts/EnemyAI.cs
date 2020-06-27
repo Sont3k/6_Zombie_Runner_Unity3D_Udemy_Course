@@ -46,7 +46,7 @@ public class EnemyAI : MonoBehaviour
         {
             ChaseTarget();
         }
-        else if (distanceToTarget <= navMeshAgent.stoppingDistance || isProvoked)
+        if (distanceToTarget <= navMeshAgent.stoppingDistance)
         {
             AttackTarget();
         }

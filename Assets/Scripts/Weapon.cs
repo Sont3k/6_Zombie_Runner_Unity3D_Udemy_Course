@@ -10,8 +10,14 @@ public class Weapon : MonoBehaviour
     public GameObject hitEffect;
     public float vfxDestroyDelay = 0.1f;
     public Ammo ammoSlot;
+    public AmmoType ammoType;
     private bool canShoot = true;
     public float timeBetweenShots = 0.5f;
+
+    private void OnEnable()
+    {
+        canShoot = true;
+    }
 
     void Update()
     {
@@ -25,11 +31,11 @@ public class Weapon : MonoBehaviour
     {
         canShoot = false;
 
-        if (ammoSlot.GetCurrentAmmo() > 0)
+        if (ammoSlot.GetCurrentAmmo(ammoType) > 0)
         {
             PlayMuzzleFlash();
             ProcessRaycast();
-            ammoSlot.ReduceCurrentAmmo();
+            ammoSlot.ReduceCurrentAmmo(ammoType);
         }
 
         yield return new WaitForSecondsRealtime(timeBetweenShots);

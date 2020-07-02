@@ -5,8 +5,15 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     public float hitPoints = 100f;
+    public float dyingDelay = 5f;
+    
+    private Animator animator;
 
-    //TODO create a public method, which reduces hitpoins by the amount of damage
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
+
     public void TakeDamage(float damage)
     {
         BroadcastMessage("OnDamageTaken");
@@ -17,7 +24,8 @@ public class EnemyHealth : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
+            animator.SetTrigger("die");
+            Destroy(gameObject, dyingDelay);
         }
     }
 }

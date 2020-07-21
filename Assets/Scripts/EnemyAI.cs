@@ -5,13 +5,13 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-    public Transform target;
     public float chaseRange = 5f;
 
     private NavMeshAgent navMeshAgent;
     private float distanceToTarget = Mathf.Infinity;
 
     private Animator animator;
+    private Transform target;
     public float turnSpeed = 5f;
     private bool isProvoked;
 
@@ -19,6 +19,7 @@ public class EnemyAI : MonoBehaviour
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        target = FindObjectOfType<PlayerHealth>().transform;
     }
 
     void Update()
@@ -46,6 +47,10 @@ public class EnemyAI : MonoBehaviour
         {
             ChaseTarget();
         }
+        else
+        {
+            Idle(); // seems ok
+        }
         if (distanceToTarget <= navMeshAgent.stoppingDistance)
         {
             AttackTarget();
@@ -56,7 +61,7 @@ public class EnemyAI : MonoBehaviour
     {
         animator.SetBool("attack", false);
         animator.SetTrigger("move");
-        navMeshAgent.SetDestination(target.transform.position);
+        navMeshAgent.SetDestination(target.position);
     }
 
     private void AttackTarget()
@@ -64,6 +69,11 @@ public class EnemyAI : MonoBehaviour
         animator.SetBool("attack", true);
         // Attack player
         print($"{name} has seeked and is destroying {target.name}");
+    }
+
+    private void Idle()
+    {
+        animator.SetTrigger("idle");
     }
 
     private void FaceTarget()

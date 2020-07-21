@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
@@ -13,6 +15,7 @@ public class Weapon : MonoBehaviour
     public AmmoType ammoType;
     private bool canShoot = true;
     public float timeBetweenShots = 0.5f;
+    public TextMeshProUGUI ammoText;
 
     private void OnEnable()
     {
@@ -21,10 +24,18 @@ public class Weapon : MonoBehaviour
 
     void Update()
     {
+        DisplayAmmo();
+
         if (Input.GetButtonDown("Fire1") && canShoot)
         {
             StartCoroutine(Shoot());
         }
+    }
+
+    private void DisplayAmmo()
+    {
+        int currentAmmo = ammoSlot.GetCurrentAmmo(ammoType); 
+        ammoText.text = currentAmmo.ToString();
     }
 
     private IEnumerator Shoot()

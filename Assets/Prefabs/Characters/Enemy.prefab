@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4518791625670870555}
   - component: {fileID: 4518791625670870554}
   - component: {fileID: 3729341299896175286}
+  - component: {fileID: 4059017349110762384}
   - component: {fileID: 8134192358440549464}
   m_Layer: 0
   m_Name: Enemy
@@ -31,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 4518791625670870544}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.13, z: -46.6}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.15, y: 1.15, z: 1.15}
   m_Children:
   - {fileID: 8477859160916615751}
   m_Father: {fileID: 0}
@@ -104,7 +105,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 3
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -124,7 +125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53bbcb910afcb374d90ea7bd52cd18a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
   chaseRange: 5
   turnSpeed: 5
 --- !u!114 &3729341299896175286
@@ -140,6 +140,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPoints: 100
+  dyingDelay: 5
+--- !u!114 &4059017349110762384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4518791625670870544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68699e4749d7d464b99b83a9d9bb9897, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 40
 --- !u!95 &8134192358440549464
 Animator:
   serializedVersion: 3
@@ -149,7 +163,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4518791625670870544}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: 8f7380da49034cd488ddff94b1ac35d1, type: 3}
   m_Controller: {fileID: 9100000, guid: b29b8878eec274b488b8d4f5dd1b6394, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
